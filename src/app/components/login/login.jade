@@ -1,0 +1,13 @@
+.login-form
+  form(name='LoginForm', novalidate='')
+    h2.text-center Log in
+    hr
+    .form-group
+      label(for='exampleInputEmail1') Email address
+      input#email.form-control(type='email', placeholder='Email', ng-model='email', required='')
+    .form-group
+      label(for='exampleInputPassword1') Password
+      input#password.form-control(type='password', placeholder='Password', ng-model='password',  required='')
+    button.btn.btn-primary.btn-block(type='submit', ng-click='lg.login()', ng-disabled='LoginForm.$invalid')
+      | Login
+    hr

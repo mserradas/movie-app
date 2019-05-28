@@ -1,0 +1,39 @@
+.container
+  .jumbotron
+    img(src='{{md.movie.Poster }}', onerror="this.src='http://placehold.it/150x220&text=N/A';", style='height: 400px; width: 300px; display: block;')
+    h2 {{md.movie.Title }} ({{md.movie.Year }})
+    p
+      b Actors: 
+      | {{md.movie.Actors }}
+    p
+      b Awards: 
+      | {{md.movie.Awards }}
+    p
+      b Country: 
+      | {{md.movie.Country }}
+    p 
+      b Director: 
+      | {{md.movie.Director }}
+    p
+      b Genre: 
+      | {{md.movie.Genre }}
+    p
+      b Plot: 
+      | {{md.movie.Plot }}
+    p
+      b Rated: 
+      | {{md.movie.Rated }}
+    p
+      b Released: 
+      | {{md.movie.Released }}
+    p
+      b Runtime: 
+      | {{md.movie.Runtime }}
+    span.label.label-success {{md.movie.imdbRating }}
+    br
+    br
+    p 
+      a.btn.btn-primary(role='button', href='http://www.imdb.com/title/{{md.movie.imdbID }}/', target='_blank') 
+        | Check on IMDb
+      button.btn.btn-default(type='submit', ui-sref='movie-search')
+        | New search

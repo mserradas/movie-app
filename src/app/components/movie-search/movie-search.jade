@@ -1,0 +1,49 @@
+.container
+  .row.mt-3.pt-3
+    .col-md-12
+      .row
+        .col
+          h1.display-4 Search a movie
+      hr.bg-info
+      .row
+        .col-md-12.col-md-offset-3
+          form.form-inline(name='searchMovie', novalidate='')
+            .form-group
+              input#movieTitle(name='movieTitle', ng-model='movieTitle', placeholder='Movie Name', type='text', required='')
+            .form-group
+              input#movieYear(name='movieYear', ng-model='movieYear', placeholder='Year', type='text')
+            button.btn.btn-success(type='submit', ng-click='ms.getMoviesSearch()', ng-disabled='searchMovie.$invalid')
+              | Search
+            button.btn.btn-default(type='submit', ng-click='ms.clearSearch()')
+              | Clean
+      br
+      br
+      .row(ng-if='ms.disabled')
+        .col-sm-6.col-md-4
+          .thumbnail
+            img(src='{{ ms.movie.Poster }}', onerror="this.src='http://placehold.it/150x220&text=N/A';", style='height: 400px; width: 100%; display: block;')
+            .caption
+              h4 {{ ms.movie.Title }} ({{ ms.movie.Year }})
+              p {{ ms.movie.Plot }}
+              button.btn.btn-info(type='button', aria-label='Left Align', ng-click='ms.navigateToMovie(ms.movie)')
+                span Info
+              button.btn.btn-warning(type='button', aria-label='Left Align', ng-click='ms.addFavorite(ms.movie)')
+                span.glyphicon.glyphicon-star(aria-hidden='true')
+      
+      .row
+        .col
+          h1.display-4 Favorites
+      hr.bg-info
+      br
+      br
+      .row(ng-if='!ms.disabledFavorite')
+        p There are no favorite movies
+      .row(ng-if='ms.disabledFavorite')
+        .col-sm-6.col-md-4(ng-repeat='mf in ms.moviesFavorite.movies')
+          .thumbnail(style='height: 650px; width: 100%; display: block;')
+            img(src='{{ mf.Poster }}', onerror="this.src='http://placehold.it/150x220&text=N/A';", style='height: 400px; width: 100%; display: block;')
+            .caption
+              h4 {{ mf.Title }} ({{ mf.Year }})
+              p {{ mf.Plot }}
+              button.btn.btn-info(type='button', aria-label='Left Align', ng-click='ms.navigateToMovie(mf)')
+                span Info
