@@ -42,7 +42,7 @@
     "lodash": "~3.10.1",
     "main-bower-files": "~2.9.0",
     "ng-annotate-loader": "0.0.10",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "phantomjs": "~1.9.18",
     "uglify-save-license": "~0.4.1",
     "webpack-stream": "~2.1.1",
